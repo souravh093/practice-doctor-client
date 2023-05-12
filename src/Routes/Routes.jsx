@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import CreateService from "../Pages/Dashboard/CreateService/CreateService";
+import BookingItems from "../Pages/Dashboard/BookingItems/BookingItems";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +27,18 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <Dashboard />
+        element: <Dashboard />,
+        children: [
+          {
+            path: 'createUser',
+            element: <CreateService />
+          },
+          {
+            path: 'bookingItems',
+            element: <BookingItems />,
+            loader: () => fetch("http://localhost:5000/doctors")
+          }
+        ]
       }
     ],
   },

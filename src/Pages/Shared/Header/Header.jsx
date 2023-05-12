@@ -4,7 +4,6 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
-  console.log(user);
   const handleLogout = () => {
     logoutUser();
   };
@@ -12,7 +11,6 @@ const Header = () => {
     <>
       <Link to="/">Home</Link>
       <Link to="/blog">Blog</Link>
-      <Link to="">Booked Services</Link>
       {
         user && <Link to="/dashboard">Dashboard</Link>
       }
